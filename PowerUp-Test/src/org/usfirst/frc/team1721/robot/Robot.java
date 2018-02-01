@@ -82,7 +82,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		//RobotMap.rd = new RobotDrive(10, 10);
+		
 	}
 
 	/**
@@ -90,9 +90,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		double axis = RobotMap.stick.getY();
-		RobotMap.driveTalonLeft.set(axis);
-		RobotMap.driveTalonRight.set(axis);
+		
 	}
 
 	@Override
@@ -104,8 +102,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		//RobotMap.rd = new RobotDrive(RobotMap.vspLeft, RobotMap.vspRight);
-		Scheduler.getInstance().run();
+		double axis = RobotMap.stick.getY();
+		RobotMap.driveTalonLeft.set(axis);
+		RobotMap.driveTalonRight.set(axis);
 	}
 
 	/**
