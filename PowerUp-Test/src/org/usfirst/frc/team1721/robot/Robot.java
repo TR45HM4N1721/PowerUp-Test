@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 		RobotMap.driveTalonLeft = new CANTalon(RobotMap.dtLeft);
 		RobotMap.driveTalonRight = new CANTalon(RobotMap.dtRight);
 		
-		RobotMap.rd = new RobotDrive(RobotMap.driveTalonLeft, RobotMap.driveTalonRight);
+		//RobotMap.rd = new RobotDrive(RobotMap.driveTalonLeft, RobotMap.driveTalonRight);
 		
 		//RobotMap.vspLeft.setSafetyEnabled(false);
 		//RobotMap.vspRight.setSafetyEnabled(false);
@@ -47,12 +47,12 @@ public class Robot extends IterativeRobot {
 		//}
 	}
 	
-	public void operatorControl(){
+	/*public void operatorControl(){
 		while(isEnabled() && isOperatorControl()){
 			DriveTrain.driveWithJoystick(RobotMap.stick, RobotMap.rd);
 			Timer.delay(0.005);
 		}
-	}
+	}*/
 
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
@@ -90,7 +90,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
+		double axis = RobotMap.stick.getY();
+		RobotMap.driveTalonLeft.set(axis);
+		RobotMap.driveTalonRight.set(axis);
 	}
 
 	@Override
